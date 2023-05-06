@@ -79,3 +79,33 @@ public class task_1 {
 
 }
 }
+/*
+ * Добрый день!
+Если вы используете поток (stream), то лучше воспользоваться следующей записью
+map.entrySet().stream()
+.sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+.forEach(System.out::println);
+последняя команда сразу выведет результат
+
+Или таким образом через comporator и linkedHashMap
+public static void Sort(HashMap<String, Integer> map) {
+
+    // создаем список записей карты и сортируем их по значениям
+    List<Map.Entry<String, Integer>> mappings = new ArrayList<>(map.entrySet());
+    Collections.sort(mappings, Comparator.comparing(Map.Entry::getValue)); //сортируем
+    Collections.reverse(mappings); // разворачиваем
+    // создаем пустой `LinkedHashMap` с порядком вставки`
+    Map<String, Integer> linkedHashMap = new LinkedHashMap<>();
+
+    // для каждой записи карты в отсортированном списке вставляем пару ключ-значение в `LinkedHashMap`
+    for (Map.Entry<String, Integer> entry: mappings) {
+        linkedHashMap.put(entry.getKey(), entry.getValue());
+    }
+    System.out.println(linkedHashMap.entrySet());
+
+    // map.entrySet().stream()
+    // .sorted(Map.Entry.<String, Integer>comparingByValue().reversed()) 
+    // .forEach(System.out::println); 
+}
+ * 
+ */
